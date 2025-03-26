@@ -19,7 +19,8 @@ Gen AI Email Processing App is used for analyzing emails stored in eml, pdf and 
 
 ## 🎥 Demo
 🔗 [Live Demo](https://genai-email-processing-app-450383511585.asia-south1.run.app/)
-📹 [Video Demo](#) (if applicable)  
+📹 [Video Demo Part 1](/artifacts/demo/VID-20250326-WA0005~3.mp4)
+📹 [Video Demo Part 2](/artifacts/demo/VID-20250326-WA0005~4.mp4)
 🖼️ Screenshots:
 
 ![Screenshot 1](/artifacts/demo/homepage.PNG)
