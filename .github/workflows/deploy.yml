@@ -1,0 +1,75 @@
+name: Build and Deploy to Google Cloud
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Ensure pip cache path exists
+      run: mkdir -p ~/.cache/pip
+
+    - name: Cache Python dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('code/GenAIEmailProcessingApp/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Log in to Google Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: gcr.io
+        username: _json_key
+        password: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: code/GenAIEmailProcessingApp
+        push: true
+        tags: gcr.io/${{ secrets.GCP_PROJECT_ID }}/genai-email-processing-app:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Ensure Google Cloud SDK path exists
+      run: mkdir -p ~/google-cloud-sdk
+
+    - name: Cache Google Cloud SDK
+      uses: actions/cache@v3
+      with:
+        path: ~/google-cloud-sdk
+        key: ${{ runner.os }}-gcloud-${{ hashFiles('code/GenAIEmailProcessingApp/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-gcloud-
+
+    - name: Install Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0.2.0
+      with:
+        version: 'latest'
+        service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+    - name: Deploy to Cloud Run
+      run: |
+        gcloud run deploy genai-email-processing-app \
+          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/genai-email-processing-app:latest \
+          --platform managed \
+          --region ${{ secrets.GCP_REGION }} \
+          --allow-unauthenticated \
+          --port 8080 \
+          --set-env-vars GENAI_API_KEY=${{ secrets.GENAI_API_KEY }},EMAIL_PROC_APP_DB=${{ secrets.EMAIL_PROC_APP_DB }}

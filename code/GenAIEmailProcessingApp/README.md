@@ -12,6 +12,8 @@ GenAIEmailProcessingApp is a Flask-based web application that processes email fi
 1. Get Gemini API Key:
    - Sign up at the Gemini API website and obtain your API key.
 2. Set environment variable with name `GENAI_API_KEY` in Windows:
+3. Create postgresql DB 
+4. Set environment variable with name 'EMAIL_PROC_APP_DB' for DB connection string starting with 'postgresql+psycopg'
    
 
 ## Installation

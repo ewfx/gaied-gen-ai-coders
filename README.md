@@ -49,6 +49,8 @@ Major challenge is to get the json output using prompt engineering
 - 🔹 Database: PostgreSQL 
 - 🔹 Other: OpenAI Documentation
 
+[Architecture](/artifacts/arch/README.md)
+
 ## 👥 Team
 - **Gen AI Coders** - [GitHub](https://github.com/ewfx/gaied-gen-ai-coders) 
 - **Sivarajan C**
