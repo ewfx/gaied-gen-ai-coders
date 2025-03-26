@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Gen AI Email Processing Application!</h1>
+    <hr class="my-4">
+    <p>Use the links below to navigate through the application:</p>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/request_types_page">Manage Request Types</a></li>
+        <li><a href="/process_email_page">Process Email</a></li>
+    </ul>
+
+    <p>Use the links below to access Open API Spec:</p>
+    <ul>
+        <li><a href="/docs">Open API Document</a></li>
+        <li><a href="/openapi.json">Open API Json file</a></li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Welcome to the Email Processing Page</h1>
+
+<form id="uploadForm" class="mt-4">
+    <div class="form-group">
+        <label for="file">Choose file to be processed and click Upload</label>
+        <input type="file" id="file" name="files" class="form-control-file">
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </div>   
+</form>
+<div id="result" class="mt-4">
+    <h2>Result</h2>            
+    <div id="resultsContainer"></div>
+</div>
+
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Clear previous results
+        document.getElementById('resultsContainer').innerHTML = '';
+        
+        // Display loading message
+        document.getElementById('resultsContainer').textContent = 'Loading...';
+
+        var formData = new FormData(this);
+        fetch('/process_email', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+          .then(data => {
+              console.log(data);
+              document.getElementById('resultsContainer').innerHTML = '';
+
+              if (Array.isArray(data.results)) {
+                    data.results.forEach(result => {
+                        var table = document.createElement('table');
+                        table.classList.add('table', 'table-bordered', 'mt-4');
+                        
+                        var tbody = document.createElement('tbody');
+                        
+                        // Add message as a header
+                        var messageHeader = document.createElement('tr');
+                        var messageCell = document.createElement('td');
+                        messageCell.colSpan = 2;
+                        messageCell.textContent = result.message;
+                        messageCell.classList.add('font-weight-bold');
+                        messageHeader.appendChild(messageCell);
+                        tbody.appendChild(messageHeader);
+
+                        var rows = [
+                            { title: 'Summary', value: result.summary },
+                            { title: 'Request Details', value: createRequestDetailsTable(result.requestClassification) },
+                            { title: 'Key Fields', value: createKeyFieldsTable(result.keyFields) }
+                        ];
+
+                        rows.forEach(rowData => {
+                            var row = document.createElement('tr');
+                            
+                            var titleCell = document.createElement('td');
+                            titleCell.textContent = rowData.title;
+                            row.appendChild(titleCell);
+
+                            var valueCell = document.createElement('td');
+                            if (rowData.title === 'Request Details' || rowData.title === 'Key Fields') {
+                                valueCell.appendChild(rowData.value);
+                            } else {
+                                valueCell.textContent = rowData.value;
+                            }
+                            row.appendChild(valueCell);
+
+                            tbody.appendChild(row);
+                        });
+                        table.appendChild(tbody);
+                        document.getElementById('resultsContainer').appendChild(table);
+                    });
+              } else {
+                  console.error('Error: data is not an array');
+              }
+          }).catch(error => {
+              console.error('Error:', error);                  
+          });
+    });
+
+    function createRequestDetailsTable(requestClassification) {
+        var table = document.createElement('table');
+        table.classList.add('table', 'table-sm', 'table-striped');
+
+        var thead = document.createElement('thead');
+        var headerRow = document.createElement('tr');
+        var headers = ['Type', 'Sub Types', 'Confidence'];
+        headers.forEach(headerText => {
+            var th = document.createElement('th');
+            th.textContent = headerText;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        var tbody = document.createElement('tbody');
+        requestClassification.forEach(rc => {
+            var row = document.createElement('tr');
+
+            var typeCell = document.createElement('td');
+            typeCell.textContent = rc.requestType;
+            row.appendChild(typeCell);
+
+            var subTypesCell = document.createElement('td');
+            subTypesCell.textContent = rc.subRequestTypes.join(', ');
+            row.appendChild(subTypesCell);
+
+            var confidenceCell = document.createElement('td');
+            confidenceCell.textContent = rc.confidenceScore;
+            row.appendChild(confidenceCell);
+
+            tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+
+        return table;
+    }
+
+    function createKeyFieldsTable(keyFields) {
+        var table = document.createElement('table');
+        table.classList.add('table', 'table-sm', 'table-striped');
+
+        var thead = document.createElement('thead');
+        var headerRow = document.createElement('tr');
+        var headers = ['Field', 'Value'];
+        headers.forEach(headerText => {
+            var th = document.createElement('th');
+            th.textContent = headerText;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        var tbody = document.createElement('tbody');
+        for (var key in keyFields) {
+            if (keyFields.hasOwnProperty(key)) {
+                var row = document.createElement('tr');
+
+                var fieldCell = document.createElement('td');
+                fieldCell.textContent = key;
+                row.appendChild(fieldCell);
+
+                var valueCell = document.createElement('td');
+                valueCell.textContent = keyFields[key];
+                row.appendChild(valueCell);
+
+                tbody.appendChild(row);
+            }
+        }
+        table.appendChild(tbody);
+
+        return table;
+    }
+</script>
+{% endblock %}

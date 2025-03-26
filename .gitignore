@@ -172,3 +172,16 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+code/GenAIEmailProcessingApp/doc/
+code/GenAIEmailProcessingApp/output/
+code/GenAIEmailProcessingApp/uploads/
+code/GenAIEmailProcessingApp/samples/1.txt
+code/GenAIEmailProcessingApp/samples/2.txt
+code/GenAIEmailProcessingApp/samples/Facility Lender Share Adjustment.eml
+code/GenAIEmailProcessingApp/samples/Facility Lender Share Adjustment.msg
+code/GenAIEmailProcessingApp/samples/multiple attachments.eml
+code/GenAIEmailProcessingApp/samples/multiple attachments.msg
+code/GenAIEmailProcessingApp/samples/Principal Repayment.eml
+code/GenAIEmailProcessingApp/samples/Principal Repayment.msg
+code/GenAIEmailProcessingApp/samples/request1.docx
+code/GenAIEmailProcessingApp/samples/request2.docx

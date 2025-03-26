@@ -1,4 +1,4 @@
-# 🚀 Project Name
+# 🚀 Gen AI Email Processing App
 
 ## 📌 Table of Contents
 - [Introduction](#introduction)
@@ -10,52 +10,52 @@
 - [How to Run](#how-to-run)
 - [Tech Stack](#tech-stack)
 - [Team](#team)
+- [Future Work](#future-work)  <!-- Added new section -->
 
 ---
 
 ## 🎯 Introduction
-A brief overview of your project and its purpose. Mention which problem statement are your attempting to solve. Keep it concise and engaging.
+Gen AI Email Processing App is used for analyzing emails stored in eml, pdf and docx format. It provides key information like Summary of email, Request Type with its confidence score and key information key value pairs. App utilizes Gemini AI model (gemini-2.0-flash) for analying documents
 
 ## 🎥 Demo
-🔗 [Live Demo](#) (if applicable)  
+🔗 [Live Demo](https://genai-email-processing-app-450383511585.asia-south1.run.app/)
 📹 [Video Demo](#) (if applicable)  
 🖼️ Screenshots:
 
-![Screenshot 1](link-to-image)
+![Screenshot 1](/artifacts/demo/homepage.PNG)
+![Screenshot 2](/artifacts/demo/EmailProcessingPageWithFileSelected.PNG)
+![Screenshot 3](/artifacts/demo/EmailProcessingPageWithResult.PNG)
+![Screenshot 4](/artifacts/demo/ManageRequestsPage.PNG)
 
 ## 💡 Inspiration
 What inspired you to create this project? Describe the problem you're solving.
 
 ## ⚙️ What It Does
-Explain the key features and functionalities of your project.
+Key feature is application capability to read email message with attachments and extract key information from all attachments and in email body. It provides Gemini AI model capability to end user for summarizing and categorizing request types with key fields information
 
 ## 🛠️ How We Built It
-Briefly outline the technologies, frameworks, and tools used in development.
+Gen AI Email Processing App is built using apI of Gemini AI model - gemini-2.0-flash
 
 ## 🚧 Challenges We Faced
-Describe the major technical or non-technical challenges your team encountered.
+Major challenge is to get the json output using prompt engineering
 
 ## 🏃 How to Run
-1. Clone the repository  
-   ```sh
-   git clone https://github.com/your-repo.git
-   ```
-2. Install dependencies  
-   ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
-   ```
-3. Run the project  
-   ```sh
-   npm start  # or python app.py
-   ```
+[Code](/code/GenAIEmailProcessingApp/README.md)
+
 
 ## 🏗️ Tech Stack
-- 🔹 Frontend: React / Vue / Angular
-- 🔹 Backend: Node.js / FastAPI / Django
-- 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API / Twilio / Stripe
+- 🔹 Frontend: Flask Bootstrap5
+- 🔹 Backend: Flask, APIFlask, Python, Gemini AI model - gemini-2.0-flash
+- 🔹 Database: PostgreSQL 
+- 🔹 Other: OpenAI Documentation
 
 ## 👥 Team
-- **Gen AI Coders** - [GitHub](#) | [LinkedIn](#)
-- **Teammate 2** - [GitHub](#) | [LinkedIn](#)
-- 
+- **Gen AI Coders** - [GitHub](https://github.com/ewfx/gaied-gen-ai-coders) 
+- **Sivarajan C**
+- **Durgesh**
+- **Hiran**
+- **Arpita**
+- **Devi**
+
+## 🔮 Future Work
+- Adding offline document processing, User Authentication, Showing historical results, Improve API Error handling 

@@ -1,0 +1,73 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="0">
+        <mxGraphModel dx="1016" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="11" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="500" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="90" y="460" as="sourcePoint"/>
+                        <mxPoint x="200" y="460" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="Upload file in eml, docx, pdf format" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="13">
+                    <mxGeometry x="0.3455" y="2" relative="1" as="geometry">
+                        <mxPoint x="-24" y="-28" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="400" width="280" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="16" target="17">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="385" y="550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="Save file in Uploads Folder" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="420" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Extract Text from file using&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="485" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=none;html=1;" edge="1" parent="1" source="18" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Call Google Gemini AI with prompt, request types and file content&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="550.5" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Send Analyzed response in JSON format to user" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="610" width="210" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="GenAIEmailProcessingApp" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="275" y="370" width="210" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="200" y="600" as="sourcePoint"/>
+                        <mxPoint x="90" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="Analyzed content in JSON format" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="21">
+                    <mxGeometry x="0.2364" relative="1" as="geometry">
+                        <mxPoint x="8" y="30" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://static.vecteezy.com/system/resources/previews/045/817/274/non_2x/gemini-logotype-artificial-intelligence-chat-bot-from-google-free-vector.jpg;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="517.1700000000001" width="231.33" height="105.83" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="18" target="29">
+                    <mxGeometry width="100" height="100" relative="1" as="geometry">
+                        <mxPoint x="540" y="600" as="sourcePoint"/>
+                        <mxPoint x="640" y="500" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
